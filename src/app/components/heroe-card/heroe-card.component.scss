@@ -1,0 +1,17 @@
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 0 0 16px;
+}
+
+// Imagen redondeada: ion-avatar ya es circular, solo ajustamos el tamaño
+.avatar {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+
+  img {
+    object-fit: cover;
+  }
+}

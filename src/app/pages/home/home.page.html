@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Héroes Ionic</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Demo Angular + Ionic</h1>
+  <p>Proyecto base del equipo 3 para explicar cada tema de la exposición.</p>
+
+  <!-- routerLink: navegar desde el HTML -->
+  <ion-button expand="block" routerLink="/heroes">Ver héroes</ion-button>
+
+  <!-- @if / @else: contenido distinto según la sesión -->
+  @if (autenticacion.sesionIniciada()) {
+    <ion-button expand="block" color="secondary" routerLink="/equipo">
+      Ir a la zona del equipo
+    </ion-button>
+    <ion-button expand="block" fill="outline" color="medium" (click)="cerrarSesion()">
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      Cerrar sesión
+    </ion-button>
+  } @else {
+    <p class="aviso">La zona del equipo está protegida por un guard. Inicia sesión para entrar.</p>
+    <ion-button expand="block" fill="outline" (click)="iniciarSesion()">
+      <ion-icon slot="start" name="log-in-outline"></ion-icon>
+      Iniciar sesión
+    </ion-button>
+    <!-- Con la sesión cerrada, el guard te devuelve a /home -->
+    <ion-button expand="block" fill="clear" color="medium" routerLink="/equipo">
+      Probar entrar sin sesión
+    </ion-button>
+  }
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/heroes" text="Héroes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ heroe?.nombre ?? 'Detalle' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- @if con "as": guarda el valor en la variable h; si no existe, va al @else -->
+  @if (heroe; as h) {
+    <img class="foto" [src]="h.imagen" [alt]="'Imagen de ' + h.nombre" />
+    <h1>{{ h.nombre }}</h1>
+
+    <!-- Atributo simple -->
+    <p>{{ h.descripcion }}</p>
+
+    <!-- @switch: un resultado distinto según el valor -->
+    @switch (h.universo) {
+      @case ('Marvel') {
+        <ion-chip color="danger">Marvel</ion-chip>
+      }
+      @case ('DC') {
+        <ion-chip color="primary">DC</ion-chip>
+      }
+    }
+
+    <ion-list>
+      <!-- Atributos de un objeto anidado -->
+      <ion-item>
+        <ion-label>
+          <h3>Origen</h3>
+          <p>{{ h.origen.ciudad }} · debut en {{ h.origen.anioDebut }}</p>
+        </ion-label>
+      </ion-item>
+
+      <!-- Arreglo recorrido con @for -->
+      <ion-item>
+        <ion-label>
+          <h3>Poderes</h3>
+          @for (poder of h.poderes; track poder) {
+            <p>{{ $index + 1 }}. {{ poder }}</p>
+          }
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  } @else {
+    <!-- ng-template: bloque reutilizable que se muestra cuando no hay héroe -->
+    <ng-container *ngTemplateOutlet="noEncontrado"></ng-container>
+  }
+
+  <ng-template #noEncontrado>
+    <h2>Héroe no encontrado</h2>
+    <p>No existe un héroe con ese id.</p>
+    <ion-button routerLink="/heroes">Volver a la lista</ion-button>
+  </ng-template>
+</ion-content>

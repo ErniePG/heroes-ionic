@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Héroes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- @for recorre el arreglo; track ayuda a Angular a identificar cada elemento -->
+  @for (heroe of heroes; track heroe.id) {
+    <app-heroe-card [heroe]="heroe" (seleccionado)="verDetalle($event)" />
+  } @empty {
+    <p class="ion-padding">No hay héroes para mostrar.</p>
+  }
+</ion-content>

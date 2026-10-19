@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="CA">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d4ed8"/><stop offset="1" stop-color="#0b1f5c"/></linearGradient></defs>
+  <rect width="256" height="256" fill="url(#g)"/>
+  <polygon points="128,30 154,98 226,102 170,148 188,218 128,180 68,218 86,148 30,102 102,98" fill="rgba(255,255,255,.14)"/>
+  <text x="128" y="128" text-anchor="middle" dominant-baseline="central" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="88" fill="#fff">CA</text>
+</svg>
